@@ -20,7 +20,7 @@
 }
 
 .window-header {
-    background: linear-gradient(to right, #1a73e8, #0b57d0);
+    background: pink;
     color: white;
     padding: 5px;
     cursor: move;
@@ -47,4 +47,5 @@
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
     resize: both;
     overflow: auto;
+    max-height: 100vh - 50px;
 }

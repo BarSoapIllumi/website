@@ -10,4 +10,7 @@ body {
     background-size: cover;
     font-family: "Silkscreen", serif;
     font-style: normal;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }

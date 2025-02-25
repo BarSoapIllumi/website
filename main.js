@@ -7,7 +7,7 @@ let appContent = {
     },
     "instagram": {
         title: "Socials",
-        content: "<p>Connect with me:</p><img  href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
+        content: "<p>Connect with me:</p><a href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
         background: "images/InstagramIcon.png",
         open: false
     }
@@ -15,6 +15,7 @@ let appContent = {
 
 
 function openApp(appId) {
+    event.stopPropagation();
     let windowsContainer = document.getElementById('windows-container');
     let existingWindow = document.getElementById(appId);
     let taskbarIcon = document.getElementById('taskbar-' + appId);
@@ -59,10 +60,11 @@ function openApp(appId) {
 }
 
 function closeApp(appId) {
+    event.stopPropagation();
     let window = document.getElementById(appId);
-    window.style.display = 'none';
     document.getElementById('taskbar-' + appId).classList.remove('open');
     document.getElementById('taskbar-' + appId).classList.remove('active');
+    window.remove();
     appContent[appId].open = false;
 }
 
@@ -75,12 +77,13 @@ function minimizeApp(appId) {
 
 function maximizeApp(appId) {
     let appWindow = document.getElementById(appId);
+    
     if (appWindow.style.width === '100vw' && appWindow.style.height === '100vh') {
         appWindow.style.width = '400px';
         appWindow.style.height = '300px';
     } else {
         appWindow.style.width = '100vw';
-        appWindow.style.height = '100vh';
+        appWindow.style.height = (window.innerHeight - 50) + 'px';
         appWindow.style.top = '0';
         appWindow.style.left = '0';
     }
@@ -88,27 +91,37 @@ function maximizeApp(appId) {
 
 // Function to enable dragging
 function makeDraggable(element) {
-    let isDragging = false;
-    let offsetX, offsetY;
+    let offsetX, offsetY, isDragging = false;
+    let header = element.querySelector('.window-header');
 
-    const header = element.querySelector('.window-header');
-    header.addEventListener('mousedown', (e) => {
+    header.addEventListener('mousedown', (event) => {
         isDragging = true;
-        offsetX = e.clientX - element.getBoundingClientRect().left;
-        offsetY = e.clientY - element.getBoundingClientRect().top;
-        element.style.zIndex = 1000; // Bring to front
+        offsetX = event.clientX - element.getBoundingClientRect().left;
+        offsetY = event.clientY - element.getBoundingClientRect().top;
+        
+        document.addEventListener('mousemove', moveWindow);
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.removeEventListener('mousemove', moveWindow);
+        });
     });
 
-    document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-            element.style.left = `${e.clientX - offsetX}px`;
-            element.style.top = `${e.clientY - offsetY}px`;
-        }
-    });
+    function moveWindow(event) {
+        if (!isDragging) return;
 
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+        let maxX = window.innerWidth - element.offsetWidth;
+        let maxY = window.innerHeight - element.offsetHeight - 50; // Prevent covering taskbar
+
+        let newX = event.clientX - offsetX;
+        let newY = event.clientY - offsetY;
+
+        // Ensure window stays within bounds
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+
+        element.style.left = newX + 'px';
+        element.style.top = newY + 'px';
+    }
 }
 
 // Close the website (simulate shutdown)
@@ -133,7 +146,8 @@ function activateApp(window) {
             appContent[win.id].open = false;
         }
         window.classList.add("active");
-        document.getElementById('taskbar-' + window.id).classList.remove('active');
+        appContent[window.id].open = true;
+        document.getElementById('taskbar-' + window.id).classList.add('active');
     } else {
         // If clicked outside any window, remove active state from all windows
         for(let win of allWindows) {
