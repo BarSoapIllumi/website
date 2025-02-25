@@ -1,0 +1,119 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: beige;
+    /*background: url('images/temp.jpg') no-repeat center center fixed;*/
+    background-size: cover;
+    font-family: "Silkscreen", serif;
+    font-style: normal;
+}
+
+#desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.icon {
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+}
+
+.icon img {
+    width: 64px;
+    height: 64px;
+}
+
+.icon p {
+    color: black;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+}
+
+#windows-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.window {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    background: white;
+    border: 2px solid #ccc;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    display: none;
+    resize: both;
+    overflow: auto;
+    border-radius: 5px;
+}
+
+.window-header {
+    background: linear-gradient(to right, #1a73e8, #0b57d0);
+    color: white;
+    padding: 5px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+}
+
+.window-header button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#taskbar {
+    background: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: none;
+    opacity: 1;
+    transition: 0.2s;
+}
+
+.taskbar-icon {
+    padding: 5px 5px 5px 5px;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    background: none;
+    opacity: 1;
+}
+
+.taskbar-icon:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+}
+
+.taskbar-icon.active{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+}
+
+.taskbar-icon.open{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    border-bottom: 1px solid rgb(41, 41, 255)
+}
