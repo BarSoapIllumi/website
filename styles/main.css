@@ -1,0 +1,13 @@
+@import url(desktop.css);
+@import url(windows.css);
+@import url(taskbar.css);
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: beige;
+    /*background: url('images/temp.jpg') no-repeat center center fixed;*/
+    background-size: cover;
+    font-family: "Silkscreen", serif;
+    font-style: normal;
+}

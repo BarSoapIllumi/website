@@ -1,0 +1,31 @@
+#desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.icon {
+    border: 1px solid red;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+}
+
+.icon img {
+    width: 64px;
+    height: 64px;
+}
+
+.icon p {
+    color: black;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+.icon img:hover {
+    padding: 5px 5px 5px 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+}

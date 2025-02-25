@@ -2,22 +2,23 @@ let appContent = {
     "file-explorer": {
         title: "File Explorer",
         content: "<p>Here are my projects:</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        //background: "images/file-explorer-bg.jpg",
+        background: "images/file-explorer-bg.jpg",
         open: false
     },
     "instagram": {
-        title: "Social Media",
+        title: "Socials",
         content: "<p>Connect with me:</p><img  href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
         background: "images/InstagramIcon.png",
         open: false
     }
 };
 
+
 function openApp(appId) {
-    console.log(appId);
     let windowsContainer = document.getElementById('windows-container');
     let existingWindow = document.getElementById(appId);
     let taskbarIcon = document.getElementById('taskbar-' + appId);
+
 
     if (!existingWindow) {
         let newWindow = document.createElement('div');
@@ -29,7 +30,7 @@ function openApp(appId) {
                 <div>
                     <button onclick="minimizeApp('${appId}')">-</button>
                     <button onclick="maximizeApp('${appId}')">□</button>
-                    <button onclick="closeApp('${appId}')">X</button>
+                    <button onclick="closeApp('${appId}')">x</button>
                 </div>
             </div>
             <div class="window-body" style="padding: 10px; background: url('appContent[appId].background') no-repeat center center; background-size: cover;">
@@ -41,22 +42,35 @@ function openApp(appId) {
         newWindow.style.display = 'block';
         windowsContainer.appendChild(newWindow);
         makeDraggable(newWindow);
+        activateApp(newWindow);
+        appContent[appId].open = true;
     } else {
+        if (appContent[appId].open) {
+            console.log('Already open');
+            minimizeApp(appId);
+            taskbarIcon.classList.add('open');
+            return;
+        }
         existingWindow.style.display = 'block';
+        activateApp(existingWindow);
+        appContent[appId].open = true;
     }
-
     taskbarIcon.classList.add('active');
 }
 
 function closeApp(appId) {
-    document.getElementById(appId).style.display = 'none';
+    let window = document.getElementById(appId);
+    window.style.display = 'none';
+    document.getElementById('taskbar-' + appId).classList.remove('open');
     document.getElementById('taskbar-' + appId).classList.remove('active');
     appContent[appId].open = false;
 }
 
 function minimizeApp(appId) {
     document.getElementById(appId).style.display = 'none';
-    document.getElementById(appId).style.display = 'none';
+    document.getElementById('taskbar-' + appId).classList.remove('active');
+    document.getElementById('taskbar-' + appId).classList.add('open');
+    appContent[appId].open = false;
 }
 
 function maximizeApp(appId) {
@@ -102,12 +116,43 @@ function closeWebsite() {
     window.close();
 }
 
-// Highlight taskbar icons on hover
-// document.querySelectorAll('.taskbar-icon').forEach(icon => {
-//     icon.addEventListener('mouseover', () => icon.style.opacity = '0.8');
-//     icon.addEventListener('mouseout', () => {
-//         if (!icon.classList.contains('active')) {
-//             icon.style.opacity = '0.5';
-//         }
-//     });
-// });
+
+function activateApp(window) {
+    
+    let allWindows = document.querySelectorAll(".window");
+    if (window) {
+        // Bring clicked window to the front
+        zCount++; // Increase z-index counter
+        window.style.zIndex = zCount; // Set new z-index
+
+        // Make the clicked window active
+        for(let win of allWindows) {
+            win.classList.remove("active");
+            document.getElementById('taskbar-' + win.id).classList.remove('active');
+            document.getElementById('taskbar-' +  win.id).classList.add('open');
+            appContent[win.id].open = false;
+        }
+        window.classList.add("active");
+        document.getElementById('taskbar-' + window.id).classList.remove('active');
+    } else {
+        // If clicked outside any window, remove active state from all windows
+        for(let win of allWindows) {
+            win.classList.remove("active");
+        }
+    }
+}
+
+let zCount = 10;
+document.addEventListener("click", (event) => {
+    let clickedWindow = event.target.closest(".window");
+    activateApp(clickedWindow);
+});
+
+
+document.querySelectorAll(".icon").forEach(window => {
+    window.addEventListener("dblclick", () => {
+        console.log("Double click");
+        let appId = window.getAttribute("data-app"); // Get appId from data attribute
+        openApp(appId);
+    });
+});

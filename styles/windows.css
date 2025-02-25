@@ -1,0 +1,50 @@
+#windows-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.window {
+    position: absolute;
+    z-index: 10;
+    width: 400px;
+    height: 300px;
+    background: white;
+    border: 2px solid #ccc;
+    display: none;
+    resize: none;
+    overflow: none;
+    border-radius: 5px;
+}
+
+.window-header {
+    background: linear-gradient(to right, #1a73e8, #0b57d0);
+    color: white;
+    padding: 5px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+}
+
+.window-header button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.window.open{
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    resize: both;
+    overflow: auto;
+}
+
+.window.active{
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    resize: both;
+    overflow: auto;
+}
