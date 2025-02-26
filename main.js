@@ -25,7 +25,7 @@ function openApp(appId) {
                     <button onclick="closeApp('${appId}')">x</button>
                 </div>
             </div>
-            <div class="window-body" style="padding: 10px; background: url('appContent[appId].background') no-repeat center center; background-size: cover;">
+            <div class="window-body" style="padding: 10px; background: url('${appContent[appId].background}') no-repeat center center; background-size: cover;">
                 ${appContent[appId]?.content}
             </div>
         `;
@@ -69,11 +69,13 @@ function minimizeApp(appId) {
 function maximizeApp(appId) {
     let appWindow = document.getElementById(appId);
     
-    if (appWindow.style.width === '100vw' && appWindow.style.height === '100vh') {
+    if (appWindow.style.width === '100vw' && appWindow.style.height === (window.innerHeight - 50) + 'px') {
         appWindow.style.width = '400px';
         appWindow.style.height = '300px';
+        appWindow.classList.remove('fullscreen');
     } else {
-        appWindow.style.width = '100vw';
+        appWindow.classList.add('fullscreen');
+        appWindow.style.width = '100vw'
         appWindow.style.height = (window.innerHeight - 50) + 'px';
         appWindow.style.top = '0';
         appWindow.style.left = '0';
@@ -155,12 +157,9 @@ document.addEventListener("click", (event) => {
 
 
 document.querySelectorAll(".icon").forEach(window => {
-    document.getElementById(window.id).ondblclick = function(){
-        alert("The paragraph was double-clicked.");
- }
-    // window.addEventListener("dblclick", () => {
-    //     console.log("Double click");
-    //     let appId = window.getAttribute("data-app"); // Get appId from data attribute
-    //     openApp(appId);
-    // });
+    window.addEventListener("dblclick", () => {
+        console.log("Double click");
+        let appId = window.getAttribute("data-app"); // Get appId from data attribute
+        openApp(appId);
+    });
 });

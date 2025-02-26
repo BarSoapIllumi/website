@@ -12,21 +12,22 @@
     width: 400px;
     height: 300px;
     background: white;
-    border: 2px solid #ccc;
+    border: 2px solid rgb(221, 160, 191);
     display: none;
     resize: none;
     overflow: none;
     border-radius: 5px;
+    user-select: none;
 }
 
 .window-header {
     background: pink;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 5px;
     cursor: move;
     display: flex;
     justify-content: space-between;
-    border-radius: 5px 5px 0 0;
+    user-select: none;
 }
 
 .window-header button {
@@ -48,4 +49,14 @@
     resize: both;
     overflow: auto;
     max-height: 100vh - 50px;
+}
+
+.window.fullscreen {
+    position: fixed;
+    border: none;
+    display: flex;
+    resize: none;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
 }

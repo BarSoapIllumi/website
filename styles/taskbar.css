@@ -1,5 +1,5 @@
 #taskbar {
-    background: black;
+    background: rgb(255, 200, 210);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -31,12 +31,12 @@
     padding: 5px 5px 3px 5px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 3px;
-    border-bottom: 2px solid #7a7a7a;
+    border-bottom: 2px solid #fc9999;
 }
 
 .taskbar-icon.active{
     padding: 5px 5px 3px 5px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 3px;
-    border-bottom: 2px solid #377be9;
+    border-bottom: 2px solid rgb(214, 88, 130);
 }

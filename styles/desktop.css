@@ -5,23 +5,20 @@
 }
 
 .icon {
-    border: 1px solid red;
-    padding: 5px 5px 5px 5px;
-    width: 80px;
-    height: 90px;
+    padding: 5px;
+    width: 60px; /* Adjusted to ensure hover area is large enough */
+    height: auto;
     text-align: center;
     cursor: pointer;
     position: absolute;
 }
 
 .icon img {
-    width: 32px;
-    height: 32px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 8px;
+    width: 48px; /* Slightly larger for better clicking */
+    height: 48px;
     display: block;
-    cursor: pointer;
+    margin: 0 auto;
+    pointer-events: none; /* Prevents clicking on the image instead of the parent div */
 }
 
 .icon p {
@@ -29,8 +26,13 @@
     font-weight: 400;
     word-wrap: normal;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 0px;
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Slight highlight */
+    border-radius: 5px;
 }
 
 /* #taskbar {

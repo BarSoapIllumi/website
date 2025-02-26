@@ -1,7 +1,7 @@
 {
     "file-explorer": {
         "title": "File Explorer",
-        "content": "<p>Here are my projects:</p><ul><li>Project 1</li><li>Project 2</li></ul>",
+        "content": "<img src='images/OfficeIcon.png' href='https://linkedin.com' target='_blank'>LinkedIn<\/img>",
         "background": "images/file-explorer-bg.jpg",
         "open": false
     },
@@ -20,7 +20,7 @@
     "word": {
         "title": "Resume",
         "content": "<p>Click to download!</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        "background": "images/file-explorer-bg.jpg",
+        "background": "<p style=\"background-image: url('images/WordIcon.png');\" ><\/p>",
         "open": false
     },
     "outlook": {
