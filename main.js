@@ -1,17 +1,8 @@
-let appContent = {
-    "file-explorer": {
-        title: "File Explorer",
-        content: "<p>Here are my projects:</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        background: "images/file-explorer-bg.jpg",
-        open: false
-    },
-    "instagram": {
-        title: "Socials",
-        content: "<p>Connect with me:</p><a href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
-        background: "images/InstagramIcon.png",
-        open: false
-    }
-};
+let appContent = {};
+
+fetch('content.json')
+   .then(response => response.json())
+   .then(data => {appContent = data});
 
 
 function openApp(appId) {
@@ -164,9 +155,12 @@ document.addEventListener("click", (event) => {
 
 
 document.querySelectorAll(".icon").forEach(window => {
-    window.addEventListener("dblclick", () => {
-        console.log("Double click");
-        let appId = window.getAttribute("data-app"); // Get appId from data attribute
-        openApp(appId);
-    });
+    document.getElementById(window.id).ondblclick = function(){
+        alert("The paragraph was double-clicked.");
+ }
+    // window.addEventListener("dblclick", () => {
+    //     console.log("Double click");
+    //     let appId = window.getAttribute("data-app"); // Get appId from data attribute
+    //     openApp(appId);
+    // });
 });

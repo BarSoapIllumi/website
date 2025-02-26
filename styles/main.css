@@ -1,6 +1,10 @@
 @import url(desktop.css);
 @import url(windows.css);
 @import url(taskbar.css);
+/* 
+* {
+    user-select: none;
+} */
 
 body {
     margin: 0;

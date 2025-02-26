@@ -1,0 +1,38 @@
+{
+    "file-explorer": {
+        "title": "File Explorer",
+        "content": "<p>Here are my projects:</p><ul><li>Project 1</li><li>Project 2</li></ul>",
+        "background": "images/file-explorer-bg.jpg",
+        "open": false
+    },
+    "instagram": {
+        "title": "Socials",
+        "content": "<p>Connect with me:</p><a href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
+        "background": "images/InstagramIcon.png",
+        "open": false
+    },
+    "office": {
+        "title": "Work Experiences",
+        "content": "<p>GURWAH</p><ul><li>Project 1</li><li>Project 2</li></ul>",
+        "background": "images/file-explorer-bg.jpg",
+        "open": false
+    },
+    "word": {
+        "title": "Resume",
+        "content": "<p>Click to download!</p><ul><li>Project 1</li><li>Project 2</li></ul>",
+        "background": "images/file-explorer-bg.jpg",
+        "open": false
+    },
+    "outlook": {
+        "title": "Contact Me :)",
+        "content": "<p>Email or something</p><ul><li>Project 1</li><li>Project 2</li></ul>",
+        "background": "images/file-explorer-bg.jpg",
+        "open": false
+    },
+    "winrar": {
+        "title": "Education",
+        "content": "<p>WATERLOOSER</p><ul><li>Project 1</li><li>Project 2</li></ul>",
+        "background": "images/file-explorer-bg.jpg",
+        "open": false
+    }
+}
