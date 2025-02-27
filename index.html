@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script src="main.js"></script>
+
     <div id="desktop">
         
         <!-- <div class="icon" style="top: 300px; left: 400px;" ondblclick="openApp('this-pc')">
@@ -49,7 +51,7 @@
     
     <div id="taskbar">
         <img class="taskbar-icon" id="power-button" src="images/power.png" onclick="closeWebsite()">
-        <img class="taskbar-icon" id="taskbar-file-explorer" src="images/fileExplorerIcon.png" onclick="openApp('file-explorer')">
+        <img class="taskbar-icon" id="taskbar-file-explorer" src="images/fileExplorerIcon.png" onclick="windowManager.openApp('file-explorer')">
         <img class="taskbar-icon" id="taskbar-office" src="images/OfficeIcon.png" onclick="openApp('office')">
         <img class="taskbar-icon" id="taskbar-word" src="images/WordIcon.png" onclick="openApp('word')">
         <img class="taskbar-icon" id="taskbar-outlook" src="images/OutlookIcon.png" onclick="openApp('outlook')">
@@ -58,6 +60,6 @@
         
     </div>
 
-    <script src="main.js"></script>
+    
 </body>
 </html>

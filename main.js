@@ -1,165 +1,183 @@
-let appContent = {};
+class AppWindow {
+    constructor(appId, appContent, taskbar) {
+        this.appId = appId;
+        this.title = appContent[appId]?.title;
+        this.content = appContent[appId]?.content;
+        this.background = appContent[appId]?.background;
+        this.open = false;
+        this.taskbar = taskbar;
+        this.createWindow();
+    }
 
-fetch('content.json')
-   .then(response => response.json())
-   .then(data => {appContent = data});
-
-
-function openApp(appId) {
-    event.stopPropagation();
-    let windowsContainer = document.getElementById('windows-container');
-    let existingWindow = document.getElementById(appId);
-    let taskbarIcon = document.getElementById('taskbar-' + appId);
-
-
-    if (!existingWindow) {
-        let newWindow = document.createElement('div');
-        newWindow.classList.add('window');
-        newWindow.id = appId;
-        newWindow.innerHTML = `
+    createWindow() {
+        let windowsContainer = document.getElementById('windows-container');
+        this.window = document.createElement('div');
+        this.window.classList.add('window');
+        this.window.id = this.appId;
+        this.window.innerHTML = `
             <div class="window-header">
-                <span>${appContent[appId]?.title}</span>
+                <span>${this.title}</span>
                 <div>
-                    <button onclick="minimizeApp('${appId}')">-</button>
-                    <button onclick="maximizeApp('${appId}')">□</button>
-                    <button onclick="closeApp('${appId}')">x</button>
+                    <button onclick="windowManager.getApp('${this.appId}').minimize()">-</button>
+                    <button onclick="windowManager.getApp('${this.appId}').maximize()">□</button>
+                    <button onclick="windowManager.getApp('${this.appId}').close()">x</button>
                 </div>
             </div>
-            <div class="window-body" style="padding: 10px; background: url('${appContent[appId].background}') no-repeat center center; background-size: cover;">
-                ${appContent[appId]?.content}
+            <div class="window-body" style="padding: 10px; background: url('${this.background}') no-repeat center center; background-size: auto;">
+                ${this.content}
             </div>
         `;
-        newWindow.style.top = '100px';
-        newWindow.style.left = '100px';
-        newWindow.style.display = 'block';
-        windowsContainer.appendChild(newWindow);
-        makeDraggable(newWindow);
-        activateApp(newWindow);
-        appContent[appId].open = true;
-    } else {
-        if (appContent[appId].open) {
-            console.log('Already open');
-            minimizeApp(appId);
-            taskbarIcon.classList.add('open');
+        this.window.style.top = '100px';
+        this.window.style.left = '100px';
+        this.window.style.display = 'block';
+
+        windowsContainer.appendChild(this.window);
+        this.makeDraggable();
+        this.activate();
+        this.isOpen = true;
+    }
+    
+    close() {
+        event.stopPropagation();
+        this.window.remove();
+        this.taskbar.classList.remove('open', 'active');
+        this.open = false;
+    }
+    
+    minimize() {
+        console.log('Minimizing');
+        event.stopPropagation();
+        this.taskbar.classList.remove('active');
+        this.taskbar.classList.add('open');
+        this.window.style.display = 'none';
+        this.open = false;
+    }
+    
+    maximize() {
+        event.stopPropagation();
+        
+        if (this.window.contains('fullscreen')) {
+            this.window.style.width = '400px';
+            this.window.style.height = '300px';
+            this.window.classList.remove('fullscreen');
+        } else {
+            this.window.classList.add('fullscreen');
+            this.window.style.width = '100vw'
+            this.window.style.height = (window.innerHeight - 50) + 'px';
+            this.window.style.top = '0';
+            this.window.style.left = '0';
+        }
+    }
+    
+    // Function to enable dragging
+    makeDraggable() {
+        let offsetX, offsetY, isDragging = false;
+        let header = this.window.querySelector('.window-header');
+    
+        header.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            offsetX = event.clientX - this.window.getBoundingClientRect().left;
+            offsetY = event.clientY - this.window.getBoundingClientRect().top;
+            
+            document.addEventListener('mousemove', moveWindow);
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.removeEventListener('mousemove', moveWindow);
+            });
+        });
+    
+        function moveWindow(event) {
+            if (!isDragging) return;
+    
+            let maxX = window.innerWidth - this.window.offsetWidth;
+            let maxY = window.innerHeight - this.window.offsetHeight - 50; // Prevent covering taskbar
+    
+            let newX = event.clientX - offsetX;
+            let newY = event.clientY - offsetY;
+    
+            // Ensure window stays within bounds
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
+    
+            this.window.style.left = newX + 'px';
+            this.window.style.top = newY + 'px';
+        }
+    }
+
+    activate() {
+    
+        let allWindows = document.querySelectorAll(".window");
+        zCount++;
+        this.window.style.zIndex = zCount;
+
+        allWindows.forEach(win => {
+            win.classList.remove("active");
+            document.getElementById('taskbar-' + win.id).classList.remove("active", 'open');
+        });
+
+        this.window.classList.add("active");
+        this.taskbar.classList.add('active');
+    }
+
+}
+
+class WindowManager {
+    constructor() {
+        this.apps = {};
+        this.loadContent();
+        this.setupEventListeners();
+    }
+
+    loadContent() {
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {this.apps = data});
+    }
+
+    openApp(appId) {
+        event.stopPropagation();
+        console.log(`Opening app: ${appId}`);
+
+        let taskbar = document.getElementById('taskbar-' + appId);
+        if (typeof(this.apps[appId]) === 'object') {
+            if(this.apps[appId].isOpen) {
+                console.log('Already open');
+                this.apps[appId].minimize();
+                this.apps[appId].taskbar.classList.add('open');
+            } else {
+                this.apps[appId].window.style.display = 'block';
+                this.apps[appId].activate();
+                this.apps[appId].isOpen = true;
+                this.apps[appId].taskbar.classList.add('active');
+            }
             return;
         }
-        existingWindow.style.display = 'block';
-        activateApp(existingWindow);
-        appContent[appId].open = true;
+
+        let appData = this.apps[appId];
+        console.log(appData);
+        this.apps[appId] = new AppWindow(appId, appData, taskbar);
     }
-    taskbarIcon.classList.add('active');
-}
 
-function closeApp(appId) {
-    event.stopPropagation();
-    let window = document.getElementById(appId);
-    document.getElementById('taskbar-' + appId).classList.remove('open');
-    document.getElementById('taskbar-' + appId).classList.remove('active');
-    window.remove();
-    appContent[appId].open = false;
-}
-
-function minimizeApp(appId) {
-    document.getElementById(appId).style.display = 'none';
-    document.getElementById('taskbar-' + appId).classList.remove('active');
-    document.getElementById('taskbar-' + appId).classList.add('open');
-    appContent[appId].open = false;
-}
-
-function maximizeApp(appId) {
-    let appWindow = document.getElementById(appId);
-    
-    if (appWindow.style.width === '100vw' && appWindow.style.height === (window.innerHeight - 50) + 'px') {
-        appWindow.style.width = '400px';
-        appWindow.style.height = '300px';
-        appWindow.classList.remove('fullscreen');
-    } else {
-        appWindow.classList.add('fullscreen');
-        appWindow.style.width = '100vw'
-        appWindow.style.height = (window.innerHeight - 50) + 'px';
-        appWindow.style.top = '0';
-        appWindow.style.left = '0';
-    }
-}
-
-// Function to enable dragging
-function makeDraggable(element) {
-    let offsetX, offsetY, isDragging = false;
-    let header = element.querySelector('.window-header');
-
-    header.addEventListener('mousedown', (event) => {
-        isDragging = true;
-        offsetX = event.clientX - element.getBoundingClientRect().left;
-        offsetY = event.clientY - element.getBoundingClientRect().top;
-        
-        document.addEventListener('mousemove', moveWindow);
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.removeEventListener('mousemove', moveWindow);
+    setupEventListeners() {
+        document.addEventListener("click", (event) => {
+            let clickedWindow = event.target.closest(".window");
+            if (clickedWindow) {
+                this.apps[clickedWindow.id].activate();
+            }
         });
-    });
 
-    function moveWindow(event) {
-        if (!isDragging) return;
-
-        let maxX = window.innerWidth - element.offsetWidth;
-        let maxY = window.innerHeight - element.offsetHeight - 50; // Prevent covering taskbar
-
-        let newX = event.clientX - offsetX;
-        let newY = event.clientY - offsetY;
-
-        // Ensure window stays within bounds
-        newX = Math.max(0, Math.min(newX, maxX));
-        newY = Math.max(0, Math.min(newY, maxY));
-
-        element.style.left = newX + 'px';
-        element.style.top = newY + 'px';
-    }
-}
-
-// Close the website (simulate shutdown)
-function closeWebsite() {
-    window.close();
-}
-
-
-function activateApp(window) {
-    
-    let allWindows = document.querySelectorAll(".window");
-    if (window) {
-        // Bring clicked window to the front
-        zCount++; // Increase z-index counter
-        window.style.zIndex = zCount; // Set new z-index
-
-        // Make the clicked window active
-        for(let win of allWindows) {
-            win.classList.remove("active");
-            document.getElementById('taskbar-' + win.id).classList.remove('active');
-            document.getElementById('taskbar-' +  win.id).classList.add('open');
-            appContent[win.id].open = false;
-        }
-        window.classList.add("active");
-        appContent[window.id].open = true;
-        document.getElementById('taskbar-' + window.id).classList.add('active');
-    } else {
-        // If clicked outside any window, remove active state from all windows
-        for(let win of allWindows) {
-            win.classList.remove("active");
-        }
+        document.querySelectorAll(".icon").forEach(icon => {
+            icon.addEventListener("dblclick", () => {
+                let appId = icon.getAttribute("data-app");
+                this.openApp(appId);
+            });
+        });
     }
 }
 
 let zCount = 10;
-document.addEventListener("click", (event) => {
-    let clickedWindow = event.target.closest(".window");
-    activateApp(clickedWindow);
-});
+let windowManager = new WindowManager();
 
-
-document.querySelectorAll(".icon").forEach(window => {
-    window.addEventListener("dblclick", () => {
-        console.log("Double click");
-        let appId = window.getAttribute("data-app"); // Get appId from data attribute
-        openApp(appId);
-    });
-});
+function closeWebsite() {
+    window.close();
+}
