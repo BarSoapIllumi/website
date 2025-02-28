@@ -1,6 +1,12 @@
 {
+    "this-pc": {
+        "title": "About Me",
+        "content": "<img src='images/OfficeIcon.png' href='https://linkedin.com' target='_blank'>LinkedIn<\/img>",
+        "background": "/images/file-explorer-bg.jpg",
+        "open": false
+    },
     "file-explorer": {
-        "title": "File Explorer",
+        "title": "Projects",
         "content": "<img src='images/OfficeIcon.png' href='https://linkedin.com' target='_blank'>LinkedIn<\/img>",
         "background": "images/file-explorer-bg.jpg",
         "open": false
@@ -8,7 +14,7 @@
     "instagram": {
         "title": "Socials",
         "content": "<p>Connect with me:</p><a href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
-        "background": "images/InstagramIcon.png",
+        "background": "/images/InstagramIcon.png",
         "open": false
     },
     "office": {
@@ -32,7 +38,7 @@
     "winrar": {
         "title": "Education",
         "content": "<p>WATERLOOSER</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        "background": "images/educationBG.jpg",
+        "background": "/images/educationBG.jpg",
         "open": false
     }
 }

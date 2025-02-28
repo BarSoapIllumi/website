@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    /*background: url('images/temp.jpg') no-repeat center center fixed;*/
+    background-color: rgb(255, 250, 223);
     background-size: cover;
     font-family: "Silkscreen", serif;
     font-style: normal;

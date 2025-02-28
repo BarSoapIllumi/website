@@ -6,41 +6,42 @@
     <title>Angela's Home</title>
     <link rel="stylesheet" href="styles/main.css">
     <!-- FAVICON -->
-    <link rel="shortcut icon" href="images/webIcon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/desktopMisc/webIcon.png" type="image/x-icon" />
     <!-- FONT LINK -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <div id="desktop">
         
-        <div class="icon" style="top: 300px; left: 400px;" ondblclick="openApp('this-pc')">
-            <img src="images/this-pc.png" alt="This PC">
+        <div class="icon" style="top: 0px; left: 0px;" ondblclick="openApp('this-pc')">
+            <img src="images/icons/thisPcIcon.png" alt="This PC">
             <p>About Me</p>
         </div>
         <div class="icon" style="top: 100px; left: 10px;" ondblclick="openApp('file-explorer')">
-            <img src="images/fileExplorerIcon.png" alt="File Explorer">
+            <img src="images/icons/fileExplorerIcon.png" alt="File Explorer">
             <p>Projects</p>
         </div>
         <div class="icon" style="top: 190px; left: 10px;" ondblclick="openApp('instagram')">
-            <img src="images/InstagramIcon.png" alt="Instagram">
+            <img src="images/icons/InstagramIcon.png" alt="Instagram">
             <p>Socials</p>
         </div>
         <div class="icon" style="top: 280px; left: 10px;" ondblclick="openApp('outlook')">
-            <img src="images/OutlookIcon.png" alt="Outlook">
+            <img src="images/icons/OutlookIcon.png" alt="Outlook">
             <p>Contact</p>
         </div>
         <div class="icon" style="top: 370px; left: 10px;" ondblclick="openApp('word')">
-            <img src="images/WordIcon.png" alt="Word">
+            <img src="images/icons/WordIcon.png" alt="Word">
             <p>Resume</p>
         </div>
         <div class="icon" style="top: 10px; left: 110px;" ondblclick="openApp('winrar')">
-            <img src="images/winRARIcon.png" alt="WinRAR">
+            <img src="images/icons/winRARIcon.png" alt="WinRAR">
             <p>Education</p>
         </div>
         <div class="icon" style="top: 100px; left: 110px;" ondblclick="openApp('office')">
-            <img src="images/OfficeIcon.png" alt="Microsoft Office">
+            <img src="images/icons/OfficeIcon.png" alt="Microsoft Office">
             <p>Work Experience</p>
         </div>
     </div>
@@ -48,13 +49,14 @@
     <div id="windows-container"></div>
     
     <div id="taskbar">
-        <img class="taskbar-icon" id="power-button" src="images/power.png" onclick="closeWebsite()">
-        <img class="taskbar-icon" id="taskbar-file-explorer" src="images/fileExplorerIcon.png" onclick="openApp('file-explorer')">
-        <img class="taskbar-icon" id="taskbar-office" src="images/OfficeIcon.png" onclick="openApp('office')">
-        <img class="taskbar-icon" id="taskbar-word" src="images/WordIcon.png" onclick="openApp('word')">
-        <img class="taskbar-icon" id="taskbar-outlook" src="images/OutlookIcon.png" onclick="openApp('outlook')">
-        <img class="taskbar-icon" id="taskbar-winrar" src="images/winRARIcon.png" onclick="openApp('winrar')">
-        <img class="taskbar-icon" id="taskbar-instagram" src="images/InstagramIcon.png" onclick="openApp('instagram')">
+        <img class="taskbar-icon" id="power-button" src="images/desktopMisc/power.png" onclick="closeWebsite()">
+        <img class="taskbar-icon" id="taskbar-this-pc" src="images/icons/thisPcIcon.png" onclick="openApp('this-pc')">
+        <img class="taskbar-icon" id="taskbar-file-explorer" src="images/icons/fileExplorerIcon.png" onclick="openApp('file-explorer')">
+        <img class="taskbar-icon" id="taskbar-office" src="images/icons/OfficeIcon.png" onclick="openApp('office')">
+        <img class="taskbar-icon" id="taskbar-word" src="images/icons/WordIcon.png" onclick="openApp('word')">
+        <img class="taskbar-icon" id="taskbar-outlook" src="images/icons/OutlookIcon.png" onclick="openApp('outlook')">
+        <img class="taskbar-icon" id="taskbar-winrar" src="images/icons/winRARIcon.png" onclick="openApp('winrar')">
+        <img class="taskbar-icon" id="taskbar-instagram" src="images/icons/InstagramIcon.png" onclick="openApp('instagram')">
         
     </div>
 

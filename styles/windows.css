@@ -15,9 +15,10 @@
     border: 2px solid rgb(221, 160, 191);
     display: none;
     resize: none;
-    overflow: none;
+    overflow: hidden;
     border-radius: 5px;
     user-select: none;
+    overflow: hidden;
 }
 
 .window-header {
@@ -28,6 +29,7 @@
     display: flex;
     justify-content: space-between;
     user-select: none;
+    overflow-x: hidden;
 }
 
 .window-header button {
@@ -49,13 +51,11 @@
 .window.open{
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
     resize: both;
-    overflow: auto;
 }
 
 .window.active{
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
     resize: both;
-    overflow: auto;
     max-height: 100vh - 50px;
 }
 
@@ -67,4 +67,5 @@
     justify-content: center;
     align-items: center;
     box-shadow: none;
+    border-radius: 0px;
 }
