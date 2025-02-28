@@ -1,7 +1,9 @@
 #desktop {
     position: fixed;
+    background-color: beige;
     width: 100vw;
     height: 100vh;
+    z-index: 5;
 }
 
 .icon {
@@ -10,7 +12,8 @@
     height: auto;
     text-align: center;
     cursor: pointer;
-    position: absolute;
+    user-select: none;
+    position: relative;
 }
 
 .icon img {
@@ -18,7 +21,6 @@
     height: 48px;
     display: block;
     margin: 0 auto;
-    pointer-events: none; /* Prevents clicking on the image instead of the parent div */
 }
 
 .icon p {
@@ -31,49 +33,6 @@
 }
 
 .icon:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Slight highlight */
+    background-color: rgba(255, 255, 255, 0.6); /* Slight highlight */
     border-radius: 5px;
 }
-
-/* #taskbar {
-    background: black;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border: none;
-    opacity: 1;
-    transition: 0.2s;
-}
-
-.taskbar-icon {
-    padding: 5px 5px 5px 5px;
-    width: 40px;
-    height: 40px;
-    margin: 0 10px;
-    cursor: pointer;
-    background: none;
-    border-bottom: none;
-    opacity: 1;
-}
-
-.taskbar-icon:hover{
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 3px;
-}
-
-.taskbar-icon.open{
-    padding: 5px 5px 3px 5px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 3px;
-    border-bottom: 2px solid #7a7a7a;
-}
-
-.taskbar-icon.active{
-    padding: 5px 5px 3px 5px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 3px;
-    border-bottom: 2px solid #377be9;
-} */

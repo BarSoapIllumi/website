@@ -38,6 +38,14 @@
     font-size: 16px;
 }
 
+.window-body {
+    width: 100%;
+    height: calc(100% - 30px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .window.open{
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
     resize: both;

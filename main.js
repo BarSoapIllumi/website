@@ -25,7 +25,7 @@ function openApp(appId) {
                     <button onclick="closeApp('${appId}')">x</button>
                 </div>
             </div>
-            <div class="window-body" style="padding: 10px; background: url('${appContent[appId].background}') no-repeat center center; background-size: cover;">
+            <div class="window-body" style="padding: 10px; background: url('${appContent[appId].background}')">
                 ${appContent[appId]?.content}
             </div>
         `;
@@ -150,7 +150,7 @@ function activateApp(window) {
 }
 
 let zCount = 10;
-document.addEventListener("click", (event) => {
+document.addEventListener("mousedown", (event) => {
     let clickedWindow = event.target.closest(".window");
     activateApp(clickedWindow);
 });

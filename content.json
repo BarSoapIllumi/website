@@ -32,7 +32,7 @@
     "winrar": {
         "title": "Education",
         "content": "<p>WATERLOOSER</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        "background": "images/file-explorer-bg.jpg",
+        "background": "images/educationBG.jpg",
         "open": false
     }
 }
