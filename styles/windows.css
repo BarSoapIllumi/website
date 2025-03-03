@@ -9,10 +9,10 @@
 .window {
     position: absolute;
     z-index: 10;
-    width: 400px;
-    height: 300px;
-    background: white;
-    border: 2px solid rgb(221, 160, 191);
+    width: 600px;
+    height: 400px;
+    background: rgb(255, 252, 241);
+    border: 2px solid rgb(85, 49, 109);
     display: none;
     resize: none;
     overflow: hidden;
@@ -22,7 +22,7 @@
 }
 
 .window-header {
-    background: pink;
+    background: rgb(155, 113, 184);
     color: rgb(255, 255, 255);
     padding: 5px;
     cursor: move;

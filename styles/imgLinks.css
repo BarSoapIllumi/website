@@ -1,0 +1,16 @@
+.imgLinks {
+    position: center;
+    float: left;
+    padding: 10px;
+}
+
+.imgLinks img {
+    width: 100px;
+    height: 100px;
+}
+
+.imgLinks p {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}

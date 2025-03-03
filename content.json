@@ -13,8 +13,7 @@
     },
     "instagram": {
         "title": "Socials",
-        "content": "<p>Connect with me:</p><a href='https://linkedin.com' target='_blank'>LinkedIn</a><br><a href='https://github.com' target='_blank'>GitHub</a>",
-        "background": "/images/InstagramIcon.png",
+        "content": "<a class='imgLinks' href='https://linkedin.com/in/angzhou8' target='_blank'><img src='images/socials/linkedinLogo.png' alt='LinkedIn'/></a><br><a class='imgLinks' href='https://github.com/BarSoapIllumi' target='_blank'><img src='images/socials/gitLogo.png' alt='Github'/></a>",
         "open": false
     },
     "office": {

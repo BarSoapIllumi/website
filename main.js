@@ -69,14 +69,14 @@ function minimizeApp(appId) {
 function maximizeApp(appId) {
     let appWindow = document.getElementById(appId);
     
-    if (appWindow.style.width === '100vw' && appWindow.style.height === (window.innerHeight - 50) + 'px') {
+    if (appWindow.style.width === '100vw' && appWindow.style.height === (window.innerHeight - 60) + 'px') {
         appWindow.style.width = '400px';
         appWindow.style.height = '300px';
         appWindow.classList.remove('fullscreen');
     } else {
         appWindow.classList.add('fullscreen');
         appWindow.style.width = '100vw'
-        appWindow.style.height = (window.innerHeight - 50) + 'px';
+        appWindow.style.height = (window.innerHeight - 60) + 'px';
         appWindow.style.top = '0';
         appWindow.style.left = '0';
     }
@@ -103,7 +103,7 @@ function makeDraggable(element) {
         if (!isDragging) return;
 
         let maxX = window.innerWidth - element.offsetWidth;
-        let maxY = window.innerHeight - element.offsetHeight - 50; // Prevent covering taskbar
+        let maxY = window.innerHeight - element.offsetHeight - 60; // Prevent covering taskbar
 
         let newX = event.clientX - offsetX;
         let newY = event.clientY - offsetY;
