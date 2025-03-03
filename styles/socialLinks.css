@@ -1,0 +1,25 @@
+.window-content{
+    width: calc(100% - 21px);
+    height: calc(100% - 21px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links {
+    position: center;
+    float: left;
+    padding: 10px;
+    margin: 30px;
+}
+
+.social-links img {
+    width: 100px;
+    height: 100px;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+.social-links img:hover {
+    transform: scale(1.05);
+}

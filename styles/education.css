@@ -1,0 +1,51 @@
+.education-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.education-section {
+    display: flex;
+    padding: 30px 20px 0px 20px;
+}
+
+.education-container img {
+    width: 100px;
+    height: auto;
+    border: none;
+}
+
+.edu {
+    margin-left: 20px;
+    flex: 1;
+    text-align: left;
+    justify-content: center;
+}
+
+
+.edu ul {
+    margin: 5px 0;
+    font-size: 12px;
+    list-style: circle;
+}
+
+.edu-header{
+    display: flex;
+    justify-content: space-between; /* Ensures name is on the left, year is on the right */
+    align-items: center;
+    width: 100%;
+}
+
+.edu-header h1 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.edu-header p {
+    font-size: 12px;
+}

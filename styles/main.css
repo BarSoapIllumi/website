@@ -1,7 +1,9 @@
 @import url(desktop.css);
 @import url(windows.css);
 @import url(taskbar.css);
-@import url(imgLinks.css);
+@import url(socialLinks.css);
+@import url(resume.css);
+@import url(education.css);
 /* 
 * {
     user-select: none;

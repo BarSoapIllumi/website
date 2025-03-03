@@ -1,0 +1,21 @@
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 21px);
+    height: calc(100% - 21px);
+}
+
+iframe.resume-file {
+    border: none;
+    display: block;
+    flex-grow: 1;
+}
+
+.download-link {
+    text-align: center;
+    text-decoration: none;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}

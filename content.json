@@ -13,7 +13,7 @@
     },
     "instagram": {
         "title": "Socials",
-        "content": "<a class='imgLinks' href='https://linkedin.com/in/angzhou8' target='_blank'><img src='images/socials/linkedinLogo.png' alt='LinkedIn'/></a><br><a class='imgLinks' href='https://github.com/BarSoapIllumi' target='_blank'><img src='images/socials/gitLogo.png' alt='Github'/></a>",
+        "content": "<a class='social-links' href='https://linkedin.com/in/angzhou8' target='_blank' rel='noopener noreferrer'><img src='images/socials/linkedinLogo.png' alt='LinkedIn'/></a><br><a class='social-links' href='https://github.com/BarSoapIllumi' target='_blank' rel='noopener noreferrer'><img src='images/socials/gitLogo.png' alt='Github'/></a>",
         "open": false
     },
     "office": {
@@ -24,8 +24,7 @@
     },
     "word": {
         "title": "Resume",
-        "content": "<p>Click to download!</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        "background": "<p style=\"background-image: url('images/WordIcon.png');\" ><\/p>",
+        "content": "<div class='resume-container'><iframe class='resume-file' src='misc/resume.pdf'></iframe><br><a class='download-link' href='misc/resume.pdf' download>download</a></div>",
         "open": false
     },
     "outlook": {
@@ -36,8 +35,8 @@
     },
     "winrar": {
         "title": "Education",
-        "content": "<p>WATERLOOSER</p><ul><li>Project 1</li><li>Project 2</li></ul>",
-        "background": "/images/educationBG.jpg",
+        "content": "<div class='education-container'>   <div class='education-section'><a href='https://uwaterloo.ca/' target='_blank' rel='noopener noreferrer'>   <img src='images/education/waterlooLogo.png'></a><div class='edu'>  <div class='edu-header'>    <h1>University of Waterloo</h1> <p>2024 - 2029</p> </div>   <ul><li>Bachelor of Mechatronics Engineering, Honours Co-op</li><li>courses ig</li></ul>  </div></div>      <div class='education-container'>   <div class='education-section'><a href='https://uwaterloo.ca/' target='_blank' rel='noopener noreferrer'>   <img src='images/education/waterlooLogo.png'></a><div class='edu'>  <div class='edu-header'>    <h1>University of Waterloo</h1> <p>2024 - 2029</p> </div>   <ul><li>Bachelor of Mechatronics Engineering, Honours Co-op</li><li>courses ig</li></ul>  </div></div></div>",
+        "background": "images/desktopMisc/desktopBG.gif",
         "open": false
     }
 }

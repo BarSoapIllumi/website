@@ -11,7 +11,9 @@ function openApp(appId) {
     let existingWindow = document.getElementById(appId);
     let taskbarIcon = document.getElementById('taskbar-' + appId);
 
-
+    if (appId === 'word') {
+        window.open("misc/resume.pdf");
+    }
     if (!existingWindow) {
         let newWindow = document.createElement('div');
         newWindow.classList.add('window');
@@ -26,7 +28,9 @@ function openApp(appId) {
                 </div>
             </div>
             <div class="window-body" style="padding: 10px; background: url('${appContent[appId].background}')">
-                ${appContent[appId]?.content}
+                <div class="window-content">
+                    ${appContent[appId]?.content}
+                </div>
             </div>
         `;
         newWindow.style.top = '100px';
@@ -70,8 +74,8 @@ function maximizeApp(appId) {
     let appWindow = document.getElementById(appId);
     
     if (appWindow.style.width === '100vw' && appWindow.style.height === (window.innerHeight - 60) + 'px') {
-        appWindow.style.width = '400px';
-        appWindow.style.height = '300px';
+        appWindow.style.width = '600px';
+        appWindow.style.height = '400px';
         appWindow.classList.remove('fullscreen');
     } else {
         appWindow.classList.add('fullscreen');
@@ -145,6 +149,8 @@ function activateApp(window) {
         // If clicked outside any window, remove active state from all windows
         for(let win of allWindows) {
             win.classList.remove("active");
+            document.getElementById('taskbar-' + win.id).classList.remove('active');
+            document.getElementById('taskbar-' +  win.id).classList.add('open');
         }
     }
 }
