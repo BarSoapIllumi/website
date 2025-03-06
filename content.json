@@ -35,8 +35,8 @@
     },
     "winrar": {
         "title": "Education",
-        "content": "<div class='education-container'>   <div class='education-section'><a href='https://uwaterloo.ca/' target='_blank' rel='noopener noreferrer'>   <img src='images/education/waterlooLogo.png'></a><div class='edu'>  <div class='edu-header'>    <h1>University of Waterloo</h1> <p>2024 - 2029</p> </div>   <ul><li>Bachelor of Mechatronics Engineering, Honours Co-op</li><li>courses ig</li></ul>  </div></div>      <div class='education-container'>   <div class='education-section'><a href='https://uwaterloo.ca/' target='_blank' rel='noopener noreferrer'>   <img src='images/education/waterlooLogo.png'></a><div class='edu'>  <div class='edu-header'>    <h1>University of Waterloo</h1> <p>2024 - 2029</p> </div>   <ul><li>Bachelor of Mechatronics Engineering, Honours Co-op</li><li>courses ig</li></ul>  </div></div></div>",
-        "background": "images/desktopMisc/desktopBG.gif",
+        "content": "<div class='education-container'>   <div class='education-section'><a href='https://uwaterloo.ca/' target='_blank' rel='noopener noreferrer'>   <img src='images/education/waterlooLogo.png'></a><div class='edu'>  <div class='edu-header'>    <h1>University of Waterloo</h1> <p>2024 - 2029</p> </div>   <p>Bachelor of Mechatronics Engineering, Honours Co-op</p> <ul><li>GPA: 3.98/4.0</li><li>Relevant coursesL</li></ul>  </div></div>      <div class='education-container'>   <div class='education-section'><a href='https://uwaterloo.ca/' target='_blank' rel='noopener noreferrer'>   <img src='images/education/waterlooLogo.png'></a><div class='edu'>  <div class='edu-header'>    <h1>University of Waterloo</h1> <p>2024 - 2029</p> </div>   <ul><li>Bachelor of Mechatronics Engineering, Honours Co-op</li><li>courses ig</li></ul>  </div></div></div>",
+        "background": "//images/desktopMisc/desktopBG.gif",
         "open": false
     }
 }

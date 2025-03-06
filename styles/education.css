@@ -27,9 +27,14 @@
     justify-content: center;
 }
 
+.edu p {
+    margin: 3px;
+    font-size: 12px;
+    list-style: circle;
+}
 
 .edu ul {
-    margin: 5px 0;
+    margin: 0;
     font-size: 12px;
     list-style: circle;
 }
@@ -42,10 +47,11 @@
 }
 
 .edu-header h1 {
-    margin: 0;
     font-size: 14px;
+    margin: 0;
 }
 
 .edu-header p {
     font-size: 12px;
+    margin: 0;
 }
